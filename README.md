@@ -3,6 +3,8 @@ This repo contains code examples of signing requests with an rsa private key in 
 
 - Python: [get-statements-sca.py](https://github.com/transferwise/digital-signatures-examples/blob/main/get-statements-sca.py)
 - Go: [get-statements-sca.go](https://github.com/transferwise/digital-signatures-examples/blob/main/get-statements-sca.go)
+
+## Verifying webhook signatures 
 - Java: not included in this pkg, but can be found [here](https://github.com/transferwise/digital-signatures) 
 - Ruby: [verify-signature.rb](https://github.com/transferwise/digital-signatures-examples/blob/main/verify-signature.rb)
 
