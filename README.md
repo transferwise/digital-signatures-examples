@@ -1,9 +1,12 @@
 ## Signing requests to Wise API when pulling statements
 This repo contains code examples of signing requests with an rsa private key in Python and Go. 
 
-- Python: [get-statements-sca.py](https://github.com/jtrotsky/tw-sca-signatures/blob/main/get-statements-sca.py)
-- Go: [get-statements-sca.go](https://github.com/jtrotsky/tw-sca-signatures/blob/main/get-statements-sca.go)
+- Python: [get-statements-sca.py](https://github.com/transferwise/digital-signatures-examples/blob/main/get-statements-sca.py)
+- Go: [get-statements-sca.go](https://github.com/transferwise/digital-signatures-examples/blob/main/get-statements-sca.go)
+
+## Verifying webhook signatures 
 - Java: not included in this pkg, but can be found [here](https://github.com/transferwise/digital-signatures) 
+- Ruby: [verify-signature.rb](https://github.com/transferwise/digital-signatures-examples/blob/main/verify-signature.rb)
 
 ### Why
 Wise API users in the UK / Europe / EEA need to satisfy a Strong Customer Authentication (SCA) challenge from Wise when they are moving money or reading account statements. This is an additional security check to comply with the 2nd Payment Services Directive (PSD2) regulation. 
@@ -22,6 +25,8 @@ $ export API_TOKEN=<YOUR API TOKEN HERE>
 $ go run get-statements-sca.go
 OR
 $ python3 get-statements-sca.py
+OR
+$ ruby verify-signature.rb
 ```
 
 ### API Documentation
