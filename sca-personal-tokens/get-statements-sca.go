@@ -148,7 +148,7 @@ func loadPrivateKey(filePath string) (*rsa.PrivateKey, error) {
 }
 
 func doRequest(oneTimeToken, signature string, params url.Values) (*http.Response, error) {
-	u := fmt.Sprintf("%s/v3/profiles/%s/borderless-accounts/%s/statement.json",
+	u := fmt.Sprintf("%s/v1/profiles/%s/balance-statements/%s/statement.json",
 		baseURL, profileID, accountID)
 
 	url, err := url.Parse(u)
