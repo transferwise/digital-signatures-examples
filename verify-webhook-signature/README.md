@@ -26,5 +26,13 @@ Source code: [verify-signature.js](https://github.com/transferwise/digital-signa
 $ node verify-signature.js
 ```
 
+### PHP implementation
+
+Source code: [verify-signature.php](https://github.com/transferwise/digital-signatures-examples/blob/main/verify-webhook-signature/verify-signature.php)
+
+```bash
+$ php verify-signature.php
+```
+
 ### API Documentation
 - [Wise API: Webhooks](https://api-docs.wise.com/#webhook-events-event-http-requests)
