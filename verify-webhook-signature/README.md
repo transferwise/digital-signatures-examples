@@ -28,7 +28,7 @@ $ node verify-signature.js
 
 ### PHP implementation
 
-Source code: [verify-signature.js](https://github.com/transferwise/digital-signatures-examples/blob/main/verify-webhook-signature/verify-signature.php)
+Source code: [verify-signature.php](https://github.com/transferwise/digital-signatures-examples/blob/main/verify-webhook-signature/verify-signature.php)
 
 ```bash
 $ php verify-signature.php
