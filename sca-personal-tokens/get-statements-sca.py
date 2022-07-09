@@ -35,7 +35,7 @@ def get_statement(one_time_token, signature):
         'intervalEnd': interval_end})
 
     url = (
-        base_url + '/v3/profiles/' + profile_id + '/borderless-accounts/' 
+        base_url + '/v1/profiles/' + profile_id + '/balance-statements/'
         + account_id + '/statement.json?' + params)
 
     headers = {
@@ -52,13 +52,13 @@ def get_statement(one_time_token, signature):
     r = http.request('GET', url, headers=headers, retries=False)
 
     print('status:', r.status)
-    
+
     if r.status == 200 or r.status == 201:
         return json.loads(r.data)
     elif r.status == 403 and r.getheader('x-2fa-approval') is not None:
         one_time_token = r.getheader('x-2fa-approval')
         signature = do_sca_challenge(one_time_token)
-        get_statement(one_time_token, signature)
+        return get_statement(one_time_token, signature)
     else:
         print('failed: ', r.status)
         print(r.data)
@@ -73,14 +73,14 @@ def do_sca_challenge(one_time_token):
 
     private_key = rsa.PrivateKey.load_pkcs1(private_key_data, 'PEM')
 
-    # Use the private key to sign the one-time-token that was returned 
+    # Use the private key to sign the one-time-token that was returned
     # in the x-2fa-approval header of the HTTP 403.
     signed_token = rsa.sign(
-        one_time_token.encode('ascii'), 
-        private_key, 
+        one_time_token.encode('ascii'),
+        private_key,
         'SHA-256')
 
-    # Encode the signed message as friendly base64 format for HTTP 
+    # Encode the signed message as friendly base64 format for HTTP
     # headers.
     signature = base64.b64encode(signed_token).decode('ascii')
 
@@ -95,7 +95,7 @@ def main():
         print('something is wrong')
         print(statement)
         sys.exit(0)
-    
+
     if 'transactions' in statement:
         txns = len(statement['transactions'])
     else:
